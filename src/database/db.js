@@ -60,24 +60,7 @@ function initSchema() {
     );
   `);
 
-  // Seed: inserir dados de exemplo
-  db.run(`
-    INSERT OR IGNORE INTO clientes (nome, email, telefone) VALUES
-    ('João Silva', 'joao@email.com', '(16) 99999-0001'),
-    ('Pedro Alves', 'pedro@email.com', '(16) 99999-0002'),
-    ('Lucas Mendes', 'lucas@email.com', '(16) 99999-0003');
-  `);
-
-  const hoje = new Date();
-  const amanha = new Date(hoje); amanha.setDate(hoje.getDate() + 1);
-  const fmt = (d) => d.toISOString().split('T')[0];
-
-  db.run(`
-    INSERT OR IGNORE INTO agendamentos (cliente_id, servico, data, horario, status, preco) VALUES
-    (1, 'Corte Degradê', '${fmt(hoje)}', '09:00', 'agendado', 45),
-    (2, 'Corte + Barba', '${fmt(hoje)}', '10:00', 'concluido', 70),
-    (3, 'Sobrancelha', '${fmt(amanha)}', '14:00', 'agendado', 25);
-  `);
+  // Banco iniciado limpo — sem dados de exemplo
 }
 
 // Executa SELECT e retorna array de objetos
